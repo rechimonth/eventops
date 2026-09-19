@@ -1,0 +1,26 @@
+{
+  "expo": {
+    "name": "EventOps",
+    "slug": "eventops",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "scheme": "eventops",
+    "platforms": ["android", "web"],
+    "plugins": [
+      "expo-router",
+      [
+        "expo-contacts",
+        { "contactsPermission": "Lee tus contactos para seleccionar invitados." }
+      ],
+      "sentry-expo"
+    ],
+    "android": {
+      "package": "com.eventops.app",
+      "permissions": ["READ_CONTACTS"]
+    },
+    "extra": {
+      "supabaseUrl": "${SUPABASE_URL}",
+      "eas": { "projectId": "00000000-0000-0000-0000-000000000000" }
+    }
+  }
+}

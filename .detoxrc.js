@@ -1,0 +1,1 @@
+module.exports = { testRunner: 'jest', configurations: { 'android.emu': { binaryPath: 'android/app/build/outputs/apk/debug/app-debug.apk', build: 'cd android && ./gradlew assembleDebug', type: 'android.emulator', device: { avdName: 'Pixel_5' } } } };

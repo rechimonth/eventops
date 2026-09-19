@@ -1,0 +1,36 @@
+# FASE 10: CI en la nube — esquiva el bloqueo de red local.
+# Solo se necesita red para `git push`; GitHub compila y testea por nosotros.
+name: eventops-build
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci --no-audit --no-fund --legacy-peer-deps
+      - run: npm run test:logic
+      - run: npm run typecheck
+  eas-preview:
+    needs: verify
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+      - run: npm ci --no-audit --no-fund --legacy-peer-deps
+      - run: eas build -p android --profile preview --non-interactive

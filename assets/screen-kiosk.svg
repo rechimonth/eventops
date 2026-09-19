@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 600">
+  <rect width="300" height="600" rx="36" fill="#FFFFFF"/>
+  <text x="150" y="80" text-anchor="middle" font-family="Georgia,serif" font-size="28" fill="#111">¡Te invitamos!</text>
+  <text x="150" y="115" text-anchor="middle" font-size="16" fill="#555">Mesa M1 · Salón Los Olivos</text>
+  <rect x="40" y="150" width="220" height="56" rx="12" fill="#2B7FFF"/>
+  <text x="150" y="185" text-anchor="middle" font-size="19" font-weight="bold" fill="#fff">Voy 🙌</text>
+  <rect x="40" y="215" width="220" height="56" rx="12" fill="#eee"/>
+  <text x="150" y="250" text-anchor="middle" font-size="19" fill="#333">No puedo 😢</text>
+  <rect x="40" y="300" width="220" height="90" rx="12" fill="#F6F6F6" stroke="#ddd" stroke-width="2"/>
+  <text x="150" y="336" text-anchor="middle" font-size="15" fill="#555">Vestimenta: formal</text>
+  <text x="150" y="362" text-anchor="middle" font-size="15" fill="#555">Regalos: alias BODA.2026</text>
+  <rect x="40" y="415" width="220" height="90" rx="12" fill="#F6F6F6" stroke="#ddd" stroke-width="2"/>
+  <text x="150" y="451" text-anchor="middle" font-size="15" fill="#555">Álbum compartido 📸</text>
+  <text x="150" y="477" text-anchor="middle" font-size="15" fill="#555">+ subir foto</text>
+</svg>

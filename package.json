@@ -1,0 +1,48 @@
+{
+  "name": "eventops",
+  "version": "0.1.0",
+  "private": true,
+  "main": "expo-router/entry",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "web": "expo start --web",
+    "test": "jest",
+    "test:logic": "jest __tests__/budget.test.ts __tests__/gantt.test.ts __tests__/retry.test.ts",
+    "test:e2e": "detox test",
+    "typecheck": "tsc --noEmit",
+    "sync:check": "ts-node scripts/check-sync.ts"
+  },
+  "dependencies": {
+    "@nozbe/watermelondb": "^0.25.5",
+    "@react-native-async-storage/async-storage": "~1.21.0",
+    "@react-native-community/netinfo": "^11.2.0",
+    "@react-navigation/native": "^6.1.9",
+    "@supabase/supabase-js": "^2.39.0",
+    "expo": "~50.0.0",
+    "expo-contacts": "~12.3.0",
+    "expo-linking": "~6.2.2",
+    "expo-print": "~12.8.0",
+    "expo-router": "~3.4.0",
+    "nativewind": "^4.0.0",
+    "react": "18.2.0",
+    "react-native": "0.73.0",
+    "react-native-gesture-handler": "~2.14.0",
+    "react-native-reanimated": "~3.6.0",
+    "sentry-expo": "~7.0.0",
+    "zustand": "^4.5.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.0",
+    "@types/react": "~18.2.0",
+    "detox": "^20.0.0",
+    "jest": "^29.7.0",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.3.0"
+  },
+  "jest": {
+    "preset": "react-native",
+    "setupFiles": ["<rootDir>/jest.setup.js"]
+  }
+}

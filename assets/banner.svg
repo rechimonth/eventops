@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400">
+  <rect width="1200" height="400" fill="#0B0E14"/>
+  <rect x="80" y="60" width="180" height="280" rx="28" fill="#151B26" stroke="#2B7FFF" stroke-width="4"/>
+  <rect x="104" y="110" width="132" height="14" rx="7" fill="#7CFFB2"/>
+  <rect x="104" y="138" width="90" height="14" rx="7" fill="#FF4D4D"/>
+  <rect x="104" y="166" width="110" height="14" rx="7" fill="#2B7FFF"/>
+  <rect x="104" y="220" width="132" height="60" rx="10" fill="#0B0E14" stroke="#7CFFB2" stroke-width="3"/>
+  <text x="620" y="170" font-family="monospace" font-size="72" font-weight="bold" fill="#E6EDF3">EventOps</text>
+  <text x="620" y="225" font-family="monospace" font-size="30" fill="#7CFFB2">Logística de eventos offline-first</text>
+  <text x="620" y="270" font-family="monospace" font-size="24" fill="#8B949E">Gantt · QR check-in · Shadow Budget · 🟢🟡🔴 sync</text>
+</svg>

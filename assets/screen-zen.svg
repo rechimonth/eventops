@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 600">
+  <rect width="300" height="600" rx="36" fill="#FFF9F5"/>
+  <text x="150" y="90" text-anchor="middle" font-family="Georgia,serif" font-size="34" fill="#3D2C2C">Nuestra Boda</text>
+  <text x="150" y="125" text-anchor="middle" font-family="Georgia,serif" font-size="18" fill="#B08D8D">12 · 12 · 2026</text>
+  <circle cx="150" cy="230" r="70" fill="none" stroke="#E8B4B8" stroke-width="10"/>
+  <text x="150" y="222" text-anchor="middle" font-family="Georgia,serif" font-size="30" fill="#3D2C2C">84</text>
+  <text x="150" y="248" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#B08D8D">días restantes</text>
+  <rect x="40" y="340" width="220" height="60" rx="14" fill="#fff" stroke="#E8B4B8" stroke-width="2"/>
+  <text x="150" y="376" text-anchor="middle" font-family="Georgia,serif" font-size="18" fill="#3D2C2C">Moodboard ♥</text>
+  <rect x="40" y="415" width="220" height="60" rx="14" fill="#fff" stroke="#E8B4B8" stroke-width="2"/>
+  <text x="150" y="451" text-anchor="middle" font-family="Georgia,serif" font-size="18" fill="#3D2C2C">Invitados 132/150</text>
+</svg>
