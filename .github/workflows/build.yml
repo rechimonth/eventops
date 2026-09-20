@@ -13,20 +13,22 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
       - run: npm ci --no-audit --no-fund --legacy-peer-deps
       - run: npm run test:logic
       - run: npm run typecheck
   eas-preview:
     needs: verify
-    if: github.ref == 'refs/heads/main'
+    # Requiere secreto EXPO_TOKEN (eas expo.dev → Access Tokens).
+    # Sin él, el job se omite y el CI queda verde con verify.
+    if: github.ref == 'refs/heads/main' && secrets.EXPO_TOKEN != ''
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
       - uses: expo/expo-github-action@v8
         with:
