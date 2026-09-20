@@ -49,18 +49,27 @@ app.post('/ai/rsvp-chase', async (req, res) => {
   res.json({ eventId: req.body.eventId, chased: data?.length ?? 0, sample: (data ?? []).slice(0, 3) });
 });
 
-// RSVP inbound: landing + WhatsApp ("Voy, soy celíaco") => Supabase.
-// dietary se extrae por keywords: celiaco, vegetariano, vegano, kosher, halal, alergia.
+// RSVP inbound: solo con slug de invitación (nunca por teléfono: afectaría a
+// todos los eventos donde exista ese número). 404 si el slug no coincide.
 app.post('/rsvp', async (req, res) => {
   const { createClient } = await import('@supabase/supabase-js');
   const sb = createClient(process.env.SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!);
-  const { slug, status, dietary, phone } = req.body as { slug?: string; status?: string; dietary?: string; phone?: string };
+  const { slug, status, dietary } = req.body as { slug?: string; status?: string; dietary?: string };
+  if (!slug || typeof slug !== 'string' || !/^[A-Za-z0-9_-]{8,64}$/.test(slug)) {
+    return res.status(400).json({ ok: false, error: 'slug inválido' });
+  }
+  if (status !== undefined && status !== 'confirmed' && status !== 'declined') {
+    return res.status(400).json({ ok: false, error: 'status inválido' });
+  }
   const diet = String(dietary ?? '').slice(0, 200);
-  const q = slug
-    ? sb.from('guests').update({ rsvp_status: status ?? 'confirmed', dietary: diet, last_write_at: new Date().toISOString() }).eq('invite_slug', slug)
-    : sb.from('guests').update({ rsvp_status: status ?? 'confirmed', dietary: diet, last_write_at: new Date().toISOString() }).eq('phone', phone ?? '');
-  const { error } = await q;
-  if (error) return res.status(500).json({ ok: false, error: error.message });
+  const { data, error } = await sb
+    .from('guests')
+    .update({ rsvp_status: status ?? 'confirmed', dietary: diet, last_write_at: new Date().toISOString() })
+    .eq('invite_slug', slug)
+    .eq('is_deleted', false)
+    .select('id');
+  if (error) return res.status(500).json({ ok: false });
+  if (!data?.length) return res.status(404).json({ ok: false });
   res.json({ ok: true });
 });
 

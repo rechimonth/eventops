@@ -6,10 +6,13 @@
 export interface SyncRecord { id: string; last_write_at: number; last_writer?: string; deleted?: boolean }
 
 export function resolveConflict(local: SyncRecord, remote: SyncRecord): 'local' | 'remote' {
-  if ((local.deleted || remote.deleted) && local.last_write_at !== remote.last_write_at) {
+  if (local.last_write_at !== remote.last_write_at) {
     return local.last_write_at > remote.last_write_at ? 'local' : 'remote';
   }
-  return local.last_write_at >= remote.last_write_at ? 'local' : 'remote';
+  // Empate: si hay un tombstone, gana el borrado (la fila no resucita).
+  if (local.deleted && !remote.deleted) return 'local';
+  if (remote.deleted && !local.deleted) return 'remote';
+  return 'local';
 }
 
 export async function pushPull(supabase: any, table: string, localRows: SyncRecord[]) {

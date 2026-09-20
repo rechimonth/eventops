@@ -1,40 +1,51 @@
 import { Model } from '@nozbe/watermelondb';
 import { field, date, readonly } from '@nozbe/watermelondb/decorators';
 
-export class Event extends Model {
+// Modelos WatermelonDB (requiere experimentalDecorators en tsconfig).
+// Nombres *_Model para no sombrear el global Event.
+// Registrados los 5: events, guests, providers, budget_items, timeline_nodes.
+
+export class EventModel extends Model {
   static table = 'events';
-  // @ts-ignore
   @field('name') name!: string;
-  // @ts-ignore
   @field('mode') mode!: string;
-  // @ts-ignore
   @field('guest_count') guestCount!: number;
-  // @ts-ignore
   @readonly @date('updated_at') updatedAt!: Date;
 }
-export class Guest extends Model {
+
+export class GuestModel extends Model {
   static table = 'guests';
-  // @ts-ignore
   @field('event_id') eventId!: string;
-  // @ts-ignore
   @field('full_name') fullName!: string;
-  // @ts-ignore
   @field('rsvp_status') rsvp!: string;
-  // @ts-ignore
+  @field('dietary') dietary?: string;
   @field('table_id') tableId?: string;
-  // @ts-ignore
   @field('last_write_at') lastWriteAt!: number;
 }
-export class Provider extends Model {
+
+export class ProviderModel extends Model {
   static table = 'providers';
-  // @ts-ignore
   @field('event_id') eventId!: string;
-  // @ts-ignore
   @field('category') category!: string;
-  // @ts-ignore
   @field('name') name!: string;
-  // @ts-ignore
   @field('status') status!: string;
-  // @ts-ignore
   @field('qr_token') qrToken!: string;
+}
+
+export class BudgetItemModel extends Model {
+  static table = 'budget_items';
+  @field('event_id') eventId!: string;
+  @field('concept') concept!: string;
+  @field('amount') amount!: number;
+  @field('tax_rate') taxRate!: number;
+}
+
+export class TimelineNodeModel extends Model {
+  static table = 'timeline_nodes';
+  @field('event_id') eventId!: string;
+  @field('provider_id') providerId?: string;
+  @field('title') title!: string;
+  @field('starts_at') startsAt!: number;
+  @field('ends_at') endsAt!: number;
+  @field('sort_order') sortOrder!: number;
 }

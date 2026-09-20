@@ -9,7 +9,7 @@
     "ios": "expo run:ios",
     "web": "expo start --web",
     "test": "jest",
-    "test:logic": "jest __tests__/budget.test.ts __tests__/gantt.test.ts __tests__/retry.test.ts",
+    "test:logic": "jest __tests__/budget.test.ts __tests__/gantt.test.ts __tests__/retry.test.ts __tests__/sync.test.ts __tests__/landing.test.ts",
     "test:e2e": "detox test",
     "typecheck": "tsc --noEmit",
     "sync:check": "ts-node scripts/check-sync.ts"
@@ -46,6 +46,7 @@
   },
   "jest": {
     "preset": "react-native",
-    "setupFiles": ["<rootDir>/jest.setup.js"]
+    "setupFiles": ["<rootDir>/jest.setup.js"],
+    "testPathIgnorePatterns": ["/node_modules/", "\\.e2e\\.ts$"]
   }
 }

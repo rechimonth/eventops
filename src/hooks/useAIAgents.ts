@@ -9,14 +9,15 @@ const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 const FALLBACK = {
   boundary: (input: string) => ({
+    mock: true as const,
     options: [
       `Firme: "Gracias por tu mensaje. Ya decidimos: ${input.slice(0, 40)}… no habrá cambios."`,
       `Cálida: "¡Te queremos! Por logística no podemos sumar más, pero te guardamos un lugar especial en la fiesta."`,
       `Neutra: "Anotado. Lo evaluamos con el/la planner y te confirmamos por este medio."`,
     ],
   }),
-  scraper: (query: string) => ({ query, avgRange: 'USD 400-1200', source: 'mock offline' }),
-  rsvpChase: (eventId: string) => ({ eventId, chased: 9, note: 'mock: 9 pendientes con recordatorio programado' }),
+  scraper: (query: string) => ({ query, avgRange: 'USD 400-1200', source: 'mock offline', mock: true as const }),
+  rsvpChase: (eventId: string) => ({ eventId, chased: 9, note: 'mock: 9 pendientes con recordatorio programado', mock: true as const }),
 };
 
 async function post(path: string, body: any) {

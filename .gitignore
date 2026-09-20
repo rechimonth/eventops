@@ -8,8 +8,13 @@ dist/
 # env & secrets
 .env
 .env.local
+.env.*
+!.env.example
 *.keystore
 *.jks
+*.p8
+*.key
+*.mobileprovision
 # OS / editors
 .DS_Store
 Thumbs.db
