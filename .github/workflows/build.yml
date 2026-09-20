@@ -40,4 +40,4 @@ jobs:
       - if: env.EXPO_TOKEN != ''
         run: eas build -p android --profile preview --non-interactive
       - if: env.EXPO_TOKEN == ''
-        run: echo "EXPO_TOKEN no configurado: build EAS omitido (verify ya paso)."
+        run: echo 'EXPO_TOKEN no configurado - build EAS omitido (verify ya paso).'
