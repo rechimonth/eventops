@@ -4,6 +4,10 @@
 <h1 align="center">EventOps — Logística de Eventos Offline-First</h1>
 
 <p align="center">
+  <a href="https://github.com/rechimonth/eventops/actions"><img src="https://github.com/rechimonth/eventops/actions/workflows/build.yml/badge.svg" alt="CI"/></a>
+</p>
+
+<p align="center">
   <strong>Un ERP de logística para bodas y eventos masivos: Gantt en tiempo real, check-in de proveedores por QR y presupuestos con imprevistos, funcionando sin Wi-Fi en el salón.</strong>
 </p>
 
